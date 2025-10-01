@@ -15,10 +15,10 @@ System.out.println(provider.getMessage("hello.world", "en"));
 // Output: "Hello World"
 
 
-Technologies
+## Technologies
 Java 17
 JUnit 5
 Maven
 
-License
+## License
 This project is under MIT License.
