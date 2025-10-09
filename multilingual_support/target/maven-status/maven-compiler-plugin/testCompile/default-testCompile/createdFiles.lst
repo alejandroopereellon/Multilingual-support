@@ -1,0 +1,5 @@
+multilingual_support\CheckLanguageExistsTest.class
+multilingual_support\LanguageSelectionFromSystemTest.class
+multilingual_support\MessageProviderTest.class
+multilingual_support\TranslationLoaderTest.class
+multilingual_support\DefaultLanguageTest.class

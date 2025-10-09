@@ -1,5 +1,6 @@
 package multilingual_support.getMessages;
 
+import java.text.MessageFormat;
 import java.util.HashMap;
 
 import org.apache.logging.log4j.LogManager;
@@ -33,5 +34,10 @@ public class MessageProvider {
 		}
 
 		return message;
+	}
+
+	public String findMessage(String key, Object... args) {
+		String message = findMessage(key);
+		return MessageFormat.format(message, args);
 	}
 }
