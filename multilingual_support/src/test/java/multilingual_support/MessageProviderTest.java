@@ -1,18 +1,18 @@
 package multilingual_support;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashMap;
 
 import org.junit.jupiter.api.Test;
 
-import multilingual_support.exceptions.MessageNotFoundException;
 import multilingual_support.getMessages.MessageProvider;
 
 class MessageProviderTest {
 
     @Test
-    void testMessageFound() throws MessageNotFoundException {
+    void testMessageFound() {
         HashMap<String, String> map = new HashMap<>();
         map.put("Test", "hello world");
 
@@ -29,8 +29,7 @@ class MessageProviderTest {
 
         MessageProvider provider = new MessageProvider(map);
 
-        assertThrows(MessageNotFoundException.class,
-                () -> provider.findMessage("NotFound"));
+        assertTrue(provider.findMessage("TestNotExists").startsWith("[Missing message: "));
     }
 
     @Test
@@ -40,7 +39,6 @@ class MessageProviderTest {
 
         MessageProvider provider = new MessageProvider(map);
 
-        assertThrows(MessageNotFoundException.class,
-                () -> provider.findMessage(""));
+        assertTrue(provider.findMessage("").startsWith("[Missing message: "));
     }
 }

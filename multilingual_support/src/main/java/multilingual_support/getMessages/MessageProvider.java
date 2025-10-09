@@ -5,8 +5,6 @@ import java.util.HashMap;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import multilingual_support.exceptions.MessageNotFoundException;
-
 /**
  * EN – Class responsible for returning messages from a {@link HashMap}.
  * 
@@ -25,13 +23,13 @@ public class MessageProvider {
 		this.map = map;
 	}
 
-	public String findMessage(String key) throws MessageNotFoundException {
+	public String findMessage(String key) {
 		String message = map.get(key);
 		logger.debug("The value of message is: {}", message);
 
 		if (message == null || message.isBlank()) {
-			logger.error("Message with key '{}' not found. Throwing MessageNotFoundException.", key);
-			throw new MessageNotFoundException(key);
+			logger.error("Message with key '{}' not found.", key);
+			return "[Missing message: " + key + "]";
 		}
 
 		return message;
