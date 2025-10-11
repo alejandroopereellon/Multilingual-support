@@ -3,6 +3,8 @@ package multilingual_support.language_selection;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import multilingual_support.loadConfiguration.Configuration;
+
 /**
  * EN – Class responsible for checking whether a language exists in
  * {@link AvailableLanguages}. If it does not exist or is null, the default
@@ -24,10 +26,10 @@ public class CheckLanguageExists {
 		if (language != null && !language.isBlank()) {
 			logger.debug("The provided language '{}' is not null/blank", language);
 
-			for (AvailableLanguages lang : AvailableLanguages.values()) {
-				if (lang.getCode().equalsIgnoreCase(language)) {
+			for (String lang : Configuration.getLanguages()) {
+				if (lang.equalsIgnoreCase(language)) {
 					logger.info("The language {} was found and return it", lang);
-					return lang.getCode();
+					return lang;
 				}
 			}
 			logger.info("The language {} does not exist in AvailableLanguages", language);
@@ -36,7 +38,7 @@ public class CheckLanguageExists {
 		 * EN - if it does not exist or is null, the default language is returned.
 		 */
 		logger.warn("The selected value is null, blank or doesnt exists, return the default language");
-		return DefaultLanguage.getDefaultLanguage();
+		return Configuration.getDefaultLanguage();
 
 	}
 }

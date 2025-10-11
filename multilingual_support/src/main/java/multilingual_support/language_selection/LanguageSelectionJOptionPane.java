@@ -1,9 +1,14 @@
 package multilingual_support.language_selection;
 
+import java.util.Arrays;
+import java.util.Locale;
+
 import javax.swing.JOptionPane;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import multilingual_support.loadConfiguration.Configuration;
 
 /**
  * EN - Class that implements the LanguageProvider interface to allow the user
@@ -38,9 +43,9 @@ public class LanguageSelectionJOptionPane implements LanguageProvider {
 		 * 
 		 * ES - Mostramos un JOptionPane para que el usuario seleccione el idioma
 		 */
-		AvailableLanguages selection = (AvailableLanguages) JOptionPane.showInputDialog(null, "Select a Language",
-				"Language Selection", JOptionPane.QUESTION_MESSAGE, null, AvailableLanguages.values(),
-				AvailableLanguages.ENGLISH);
+		String selection = (String) JOptionPane.showInputDialog(null, "Select a Language", "Language Selection",
+				JOptionPane.QUESTION_MESSAGE, null, getArrayLanguageName(),
+				getLanguageName(Configuration.getDefaultLanguage()));
 
 		logger.debug("The value of selection from the JOptionPane is: {}", selection);
 
@@ -52,16 +57,62 @@ public class LanguageSelectionJOptionPane implements LanguageProvider {
 		 * contrario se introduce el idioma seleccionado en el JOptionPane
 		 */
 		if (selection != null) {
-			logger.info("User selected a valid language: {}", selection.getCode());
-			return selection.getCode();
+			logger.info("User selected a valid language: {}", selection);
+			return selection;
 		} else {
 			JOptionPane.showMessageDialog(null,
-					"The default language will be selected (" + DefaultLanguage.getDefaultLanguage() + ")",
+					"The default language will be selected (" + Configuration.getDefaultLanguage() + ")",
 					"Language selection canceled", JOptionPane.INFORMATION_MESSAGE);
 		}
 
 		logger.warn("No language was selected in the JOptionPane. Returning default language.");
-		return DefaultLanguage.getDefaultLanguage();
+		return Configuration.getDefaultLanguage();
 	}
 
+	/**
+	 * EN - Returns the full language name in English.
+	 * 
+	 * ES - Devuelve el nombre completo del idioma en inglés.
+	 * 
+	 * @param languageCode The language code ("es", "en", "fr", "de", "pt").
+	 * @return The full language name in English, e.g. "Spanish", or "Unknown" if
+	 *         invalid.
+	 */
+	private String getLanguageName(String languageCode) {
+		if (languageCode == null || languageCode.isBlank()) {
+			return "Unknown";
+		}
+
+		try {
+			Locale locale = Locale.of(languageCode.toLowerCase());
+
+			String languageName = locale.getDisplayLanguage(Locale.ENGLISH);
+
+			return languageName;
+		} catch (Exception e) {
+			logger.error("There was an error getting the language name.", e);
+			return "Unknown";
+		}
+
+	}
+
+	/**
+	 * EN - Returns an array containing the full names of the available languages.
+	 * 
+	 * ES - Devuelve un array que contiene los nombres completos de los idiomas
+	 * disponibles.
+	 * 
+	 * @return {@link Arrays} with the name
+	 */
+	private String[] getArrayLanguageName() {
+		// Create array with the same size of the languages list in configuration
+		String[] languageNameList = new String[Configuration.getLanguages().length];
+
+		for (int i = 0; i < languageNameList.length; i++) {
+			languageNameList[i] = getLanguageName(Configuration.getLanguages()[i]);
+
+		}
+
+		return languageNameList;
+	}
 }

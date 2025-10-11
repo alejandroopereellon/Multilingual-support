@@ -10,8 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import multilingual_support.exceptions.LanguageFileNotFoundException;
-import multilingual_support.language_selection.DefaultLanguage;
-import multilingual_support.language_selection.FileType;
+import multilingual_support.loadConfiguration.Configuration;
 
 /**
  * EN – Class responsible for loading and storing translation key–value pairs
@@ -47,8 +46,8 @@ public class TranslationLoader {
 	public void loadTranslations() {
 		logger.info("The translations will be loaded");
 
-		for (FileType type : FileType.values()) {
-			logger.info("They are going to load the file: {}", type.getCode());
+		for (String type : Configuration.getFoldersAvailable()) {
+			logger.info("They are going to load the file: {}", type);
 			try {
 				/**
 				 * EN - Create the inputStream
@@ -65,7 +64,7 @@ public class TranslationLoader {
 				loadFromProperties(input);
 
 			} catch (Exception e) {
-				logger.error("Error loading translations for file {}", type.getCode(), e);
+				logger.error("Error loading translations for file {}", type, e);
 				e.printStackTrace();
 			}
 
@@ -83,8 +82,8 @@ public class TranslationLoader {
 	 * @return {@link InputStream}
 	 * @throws LanguageFileNotFoundException
 	 */
-	private InputStream openResource(FileType type) throws LanguageFileNotFoundException {
-		String filePath = "/messages/" + type.getCode() + "/messages_" + languageCode.toLowerCase() + ".properties";
+	private InputStream openResource(String type) throws LanguageFileNotFoundException {
+		String filePath = "/messages/" + type + "/messages_" + languageCode.toLowerCase() + ".properties";
 		logger.debug("The file path is {}" + filePath);
 
 		/**
@@ -103,8 +102,8 @@ public class TranslationLoader {
 			 * ES - En caso de no existir el fichero se utiliza el lenguaje predeterminado
 			 */
 			logger.warn("Language file not found, trying default language");
-			languageFile = getClass().getResourceAsStream("/messages/" + type.getCode() + "/messages_"
-					+ DefaultLanguage.getDefaultLanguage() + ".properties");
+			languageFile = getClass().getResourceAsStream(
+					"/messages/" + type + "/messages_" + Configuration.getDefaultLanguage() + ".properties");
 
 			/**
 			 * EN - If the default file does not exist either, an exception will be created.
@@ -113,7 +112,7 @@ public class TranslationLoader {
 			 */
 			if (languageFile == null) {
 				logger.error("The selected {} and default {} language is not found for the file: {}", languageCode,
-						DefaultLanguage.getDefaultLanguage(), filePath);
+						Configuration.getDefaultLanguage(), filePath);
 				throw new LanguageFileNotFoundException(filePath);
 			}
 		}

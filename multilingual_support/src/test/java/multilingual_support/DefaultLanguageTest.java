@@ -4,13 +4,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import multilingual_support.language_selection.DefaultLanguage;
+import multilingual_support.loadConfiguration.Configuration;
 
 class DefaultLanguageTest {
 
 	@Test
 	void testDefaultLanguage() {
-		assertEquals("de", DefaultLanguage.getDefaultLanguage());
+		System.out.println(Configuration.getDefaultLanguage());
+		assertEquals("de", Configuration.getDefaultLanguage());
 	}
 
 }

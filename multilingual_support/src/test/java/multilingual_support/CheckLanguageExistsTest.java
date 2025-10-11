@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import multilingual_support.language_selection.CheckLanguageExists;
-import multilingual_support.language_selection.DefaultLanguage;
+import multilingual_support.loadConfiguration.Configuration;
 
 class CheckLanguageExistsTest {
 	private final CheckLanguageExists checker = new CheckLanguageExists();
@@ -22,12 +22,12 @@ class CheckLanguageExistsTest {
 
 	@Test
 	void languageNotExists() {
-		assertEquals(DefaultLanguage.getDefaultLanguage(), checker.validateLanguage("TESTERROR"));
+		assertEquals(Configuration.getDefaultLanguage(), checker.validateLanguage("TESTERROR"));
 	}
 
 	@Test
 	void languageNull() {
-		assertEquals(DefaultLanguage.getDefaultLanguage(), checker.validateLanguage(null));
+		assertEquals(Configuration.getDefaultLanguage(), checker.validateLanguage(null));
 	}
 
 }

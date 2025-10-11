@@ -21,6 +21,17 @@ class MessageProviderTest {
         String result = provider.findMessage("Test");
         assertEquals("hello world", result);
     }
+    
+    @Test
+    void testMessageTemplateFound() {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("Test", "hello {0} world");
+
+        MessageProvider provider = new MessageProvider(map);
+
+        String result = provider.findMessage("Test", "beautiful");
+        assertEquals("hello beautiful world", result);
+    }
 
     @Test
     void testMessageNotFound() {
