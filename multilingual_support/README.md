@@ -60,23 +60,23 @@ APP_BACK=Back to main screen
 
 ## Basic usage
 ```java
-Configuration config = new Configuration();
-String language = new LanguageSelectionFromSystem().selectLanguage();
-TranslationLoader loader = new TranslationLoader(language, config);
-loader.loadTranslations();
+		String language = new LanguageSelectionJOptionPane().selectLanguage();
+		TranslationLoader loader = new TranslationLoader(language);
+		loader.loadTranslations();
 
-MessageProvider provider = new MessageProvider(loader.getTranslations());
-String text = provider.findMessage("APP_BACK");
-System.out.println(text);
+		MessageProvider provider = new MessageProvider(loader.getTranslations());
+		String text = provider.findMessage("APP_BACK");
+		System.out.println(text);
 ```
 
 ---
 
 ## Add a new language
-1. Add the code to `languages_supported` in `multilanguage-config.properties`.  
+1. Add the code to `languages_supported` in `multilanguage_config.properties`.  
 2. Create new files:  
    ```
    general/messages_it.properties
+   
    personalized/messages_it.properties
    ```
 3. Copy all keys from `messages_es.properties` and translate the values.

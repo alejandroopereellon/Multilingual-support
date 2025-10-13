@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="ES"/>
     <property name="sun.boot.library.path" value="C:\Users\Alejandro\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.7.v20250502-0916\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\Alejandro\AppData\Local\Temp\surefire9122106001489452147\surefirebooter-20251009163641417_3.jar C:\Users\Alejandro\AppData\Local\Temp\surefire9122106001489452147 2025-10-09T16-36-41_268-jvmRun1 surefire-20251009163641417_1tmp surefire_0-20251009163641417_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Alejandro\AppData\Local\Temp\surefire11444181408071425945\surefirebooter-20251011152455892_3.jar C:\Users\Alejandro\AppData\Local\Temp\surefire11444181408071425945 2025-10-11T15-24-55_781-jvmRun1 surefire-20251011152455892_1tmp surefire_0-20251011152455892_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\Alejandro\git\Multilingual-support\multilingual_support\target\test-classes;C:\Users\Alejandro\git\Multilingual-support\multilingual_support\target\classes;C:\Users\Alejandro\.m2\repository\org\apache\logging\log4j\log4j-core\2.25.2\log4j-core-2.25.2.jar;C:\Users\Alejandro\.m2\repository\org\apache\logging\log4j\log4j-api\2.25.2\log4j-api-2.25.2.jar;C:\Users\Alejandro\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\Alejandro\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\Alejandro\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Alejandro\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\Alejandro\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Alejandro\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;C:\Users\Alejandro\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\Alejandro\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Alejandro\AppData\Local\Temp\surefire9122106001489452147\surefirebooter-20251009163641417_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Alejandro\AppData\Local\Temp\surefire11444181408071425945\surefirebooter-20251011152455892_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.7+6-LTS"/>
@@ -61,15 +61,14 @@
     <property name="java.class.version" value="65.0"/>
   </properties>
   <testcase name="currentOSLanguageNotExists" classname="multilingual_support.LanguageSelectionFromSystemTest" time="0.003">
-    <system-out><![CDATA[[16:36:42] [INFO ] multilingual_support.language_selection.LanguageSelectionFromSystem - Detected system locale language: fakelocation
-[16:36:42] [INFO ] multilingual_support.language_selection.CheckLanguageExists - The language fakelocation does not exist in AvailableLanguages
-[16:36:42] [WARN ] multilingual_support.language_selection.CheckLanguageExists - The selected value is null, blank or doesnt exists, return the default language
-[16:36:42] [INFO ] multilingual_support.language_selection.DefaultLanguage - the default language (de) has been requested
+    <system-out><![CDATA[[15:24:56] [INFO ] multilingual_support.language_selection.LanguageSelectionFromSystem - Detected system locale language: fakelocation
+[15:24:56] [INFO ] multilingual_support.language_selection.CheckLanguageExists - The language fakelocation does not exist in AvailableLanguages
+[15:24:56] [WARN ] multilingual_support.language_selection.CheckLanguageExists - The selected value is null, blank or doesnt exists, return the default language
 ]]></system-out>
   </testcase>
-  <testcase name="currentOSLanguage" classname="multilingual_support.LanguageSelectionFromSystemTest" time="0.002">
-    <system-out><![CDATA[[16:36:42] [INFO ] multilingual_support.language_selection.LanguageSelectionFromSystem - Detected system locale language: es
-[16:36:42] [INFO ] multilingual_support.language_selection.CheckLanguageExists - The language SPANISH was found and return it
+  <testcase name="currentOSLanguage" classname="multilingual_support.LanguageSelectionFromSystemTest" time="0.001">
+    <system-out><![CDATA[[15:24:56] [INFO ] multilingual_support.language_selection.LanguageSelectionFromSystem - Detected system locale language: es
+[15:24:56] [INFO ] multilingual_support.language_selection.CheckLanguageExists - The language es was found and return it
 ]]></system-out>
   </testcase>
 </testsuite>
