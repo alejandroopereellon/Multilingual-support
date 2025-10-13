@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import multilingual_support.language_selection.CheckLanguageExists;
+import multilingual_support.languageSelection.CheckLanguageExists;
 import multilingual_support.loadConfiguration.Configuration;
 
 class CheckLanguageExistsTest {

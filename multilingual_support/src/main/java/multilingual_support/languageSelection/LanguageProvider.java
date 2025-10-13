@@ -1,4 +1,4 @@
-package multilingual_support.language_selection;
+package multilingual_support.languageSelection;
 
 public interface LanguageProvider {
 

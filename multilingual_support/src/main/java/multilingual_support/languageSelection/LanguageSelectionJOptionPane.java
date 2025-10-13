@@ -1,4 +1,4 @@
-package multilingual_support.language_selection;
+package multilingual_support.languageSelection;
 
 import java.util.Arrays;
 import java.util.Locale;
@@ -58,7 +58,7 @@ public class LanguageSelectionJOptionPane implements LanguageProvider {
 		 */
 		if (selection != null) {
 			logger.info("User selected a valid language: {}", selection);
-			return selection;
+			return getLanguageCode(selection);
 		} else {
 			JOptionPane.showMessageDialog(null,
 					"The default language will be selected (" + Configuration.getDefaultLanguage() + ")",
@@ -94,6 +94,33 @@ public class LanguageSelectionJOptionPane implements LanguageProvider {
 			return "Unknown";
 		}
 
+	}
+
+	/**
+	 * EN - Returns the language code.
+	 * 
+	 * ES - Devuelve el codigo del idioma en inglés.
+	 * 
+	 * @param languageCode The language Name ("Spanish", "English").
+	 * @return The language code or "Unknown" if invalid.
+	 */
+	private String getLanguageCode(String languageName) {
+		if (languageName == null || languageName.isBlank()) {
+			return "Unknown";
+		}
+
+		try {
+			for (Locale locale : Locale.getAvailableLocales()) {
+				// Coincidencia exacta con el nombre en inglés o en su idioma nativo
+				if (locale.getDisplayLanguage(Locale.ENGLISH).equalsIgnoreCase(languageName)
+						|| locale.getDisplayLanguage(locale).equalsIgnoreCase(languageName)) {
+					return locale.getLanguage();
+				}
+			}
+		} catch (Exception e) {
+			logger.error("There was an error getting the language name.", e);
+		}
+		return "Unknown";
 	}
 
 	/**

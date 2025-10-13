@@ -6,7 +6,7 @@ import java.util.Locale;
 
 import org.junit.jupiter.api.Test;
 
-import multilingual_support.language_selection.LanguageSelectionFromSystem;
+import multilingual_support.languageSelection.LanguageSelectionFromSystem;
 
 class LanguageSelectionFromSystemTest {
 

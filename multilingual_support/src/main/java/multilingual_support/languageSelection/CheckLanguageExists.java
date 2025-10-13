@@ -1,4 +1,4 @@
-package multilingual_support.language_selection;
+package multilingual_support.languageSelection;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
